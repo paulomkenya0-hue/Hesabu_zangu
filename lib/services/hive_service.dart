@@ -8,10 +8,6 @@ class HiveService {
   factory HiveService() => _instance;
   HiveService._internal();
 
-  // ━━━ BOXES ━━━
-  late Box<TransactionModel> _transactionBox;
-  late Box _settingsBox;
-
   // ━━━ INITIALIZE ━━━
   static Future<void> init() async {
     await Hive.initFlutter();
