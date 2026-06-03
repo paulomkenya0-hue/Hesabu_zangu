@@ -27,19 +27,21 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
   DateTime _selectedDate = DateTime.now();
   bool _isSaving = false;
 
+  // ✅ FIX: Tumia widget.type badala ya isIncome
+  bool get _isIncome => widget.type == 'income';
+
   @override
   void initState() {
     super.initState();
-    // Preload interstitial tayari
     AdMobService().loadInterstitialAd();
   }
 
-  List<Map<String, dynamic>> get categories => isIncome
+  List<Map<String, dynamic>> get categories => _isIncome
       ? AppConstants.incomeCategories
       : AppConstants.expenseCategories;
 
-  Color get primaryColor => isIncome ? AppColors.income : AppColors.expense;
-  Color get bgColor => isIncome ? AppColors.incomeLight : AppColors.expenseLight;
+  Color get primaryColor => _isIncome ? AppColors.income : AppColors.expense;
+  Color get bgColor => _isIncome ? AppColors.incomeLight : AppColors.expenseLight;
 
   Future<void> _pickDate() async {
     final picked = await showDatePicker(
@@ -60,13 +62,12 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
   }
 
   Future<void> _save() async {
-    // Validation
     if (_amountController.text.trim().isEmpty) {
       _showError('Tafadhali weka kiasi cha pesa');
       return;
     }
     if (_selectedCategory == null) {
-      _showError('Tafadhali chagua aina ya ${isIncome ? 'mapato' : 'matumizi'}');
+      _showError('Tafadhali chagua aina ya ${_isIncome ? 'mapato' : 'matumizi'}');
       return;
     }
 
@@ -95,14 +96,13 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
     setState(() => _isSaving = false);
 
     if (mounted) {
-      // Success feedback
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Row(
             children: [
               const Text('✅ ', style: TextStyle(fontSize: 18)),
               Text(
-                'Imehifadhiwa! ${isIncome ? 'Mapato' : 'Matumizi'} yameongezwa.',
+                'Imehifadhiwa! ${_isIncome ? 'Mapato' : 'Matumizi'} yameongezwa.',
                 style: const TextStyle(color: Colors.white),
               ),
             ],
@@ -136,7 +136,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
       appBar: AppBar(
         backgroundColor: primaryColor,
         title: Text(
-          isIncome ? '💰 Ongeza Mapato' : '💸 Ongeza Matumizi',
+          _isIncome ? '💰 Ongeza Mapato' : '💸 Ongeza Matumizi',
           style: const TextStyle(
               color: Colors.white, fontWeight: FontWeight.bold),
         ),
@@ -157,10 +157,10 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
               decoration: BoxDecoration(
                 color: AppColors.card,
                 borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: primaryColor.withOpacity(0.3)),
+                border: Border.all(color: primaryColor.withValues(alpha: 0.3)),
                 boxShadow: [
                   BoxShadow(
-                    color: primaryColor.withOpacity(0.08),
+                    color: primaryColor.withValues(alpha: 0.08),
                     blurRadius: 12,
                     offset: const Offset(0, 4),
                   ),
@@ -211,7 +211,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
 
             // ━━━ CATEGORY SELECTION ━━━
             _buildSectionTitle(
-                'Aina ya ${isIncome ? 'Mapato' : 'Matumizi'}'),
+                'Aina ya ${_isIncome ? 'Mapato' : 'Matumizi'}'),
             const SizedBox(height: 8),
             Container(
               decoration: BoxDecoration(
@@ -239,7 +239,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                         border: Border.all(
                           color: isSelected
                               ? primaryColor
-                              : primaryColor.withOpacity(0.2),
+                              : primaryColor.withValues(alpha: 0.2),
                         ),
                       ),
                       child: Row(
@@ -280,7 +280,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                 decoration: BoxDecoration(
                   color: AppColors.card,
                   borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: Colors.grey.withOpacity(0.2)),
+                  border: Border.all(color: Colors.grey.withValues(alpha: 0.2)),
                 ),
                 child: Row(
                   children: [
@@ -323,12 +323,12 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
                   borderSide: BorderSide(
-                      color: Colors.grey.withOpacity(0.2)),
+                      color: Colors.grey.withValues(alpha: 0.2)),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
                   borderSide: BorderSide(
-                      color: Colors.grey.withOpacity(0.2)),
+                      color: Colors.grey.withValues(alpha: 0.2)),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
@@ -351,7 +351,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                     borderRadius: BorderRadius.circular(16),
                   ),
                   elevation: 4,
-                  shadowColor: primaryColor.withOpacity(0.4),
+                  shadowColor: primaryColor.withValues(alpha: 0.4),
                 ),
                 child: _isSaving
                     ? const SizedBox(
@@ -363,7 +363,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                         ),
                       )
                     : Text(
-                        isIncome
+                        _isIncome
                             ? '💰 Hifadhi Mapato'
                             : '💸 Hifadhi Matumizi',
                         style: const TextStyle(
@@ -408,3 +408,4 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
     super.dispose();
   }
 }
+ 
