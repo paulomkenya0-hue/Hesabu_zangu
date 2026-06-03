@@ -1,0 +1,44 @@
+# ━━━ FLUTTER ━━━
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+pubspec.lock
+
+# ━━━ ANDROID ━━━
+android/local.properties
+android/.gradle
+android/captures/
+android/gradlew
+android/gradlew.bat
+android/gradle/wrapper/
+
+# ━━━ KEYSTORE — MUHIMU SANA! ━━━
+*.keystore
+*.jks
+android/app/upload-keystore.jks
+android/key.properties
+
+# ━━━ SECRETS ━━━
+.env
+google-services.json
+GoogleService-Info.plist
+
+# ━━━ IDE ━━━
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.DS_Store
+Thumbs.db
+
+# ━━━ LOGS ━━━
+*.log
+logs/
+
+# ━━━ TEST ━━━
+coverage/

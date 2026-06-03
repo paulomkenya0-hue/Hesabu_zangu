@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sera ya Faragha — Hesabu Zangu</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #F5F5F5;
+      color: #212121;
+      line-height: 1.7;
+    }
+    .header {
+      background: linear-gradient(135deg, #1B5E20, #388E3C);
+      color: white;
+      padding: 40px 24px;
+      text-align: center;
+    }
+    .header .emoji { font-size: 48px; margin-bottom: 12px; }
+    .header h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+    .header p { font-size: 14px; opacity: 0.8; }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .card h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1B5E20;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card p, .card li {
+      font-size: 14px;
+      color: #424242;
+      margin-bottom: 10px;
+    }
+    .card ul { padding-left: 20px; }
+    .card li { margin-bottom: 6px; }
+    .highlight {
+      background: #E8F5E9;
+      border-left: 4px solid #1B5E20;
+      padding: 14px 16px;
+      border-radius: 0 10px 10px 0;
+      margin: 12px 0;
+    }
+    .highlight p { margin: 0; color: #1B5E20; font-weight: 600; }
+    .footer {
+      text-align: center;
+      padding: 24px;
+      color: #9E9E9E;
+      font-size: 12px;
+    }
+    .badge {
+      display: inline-block;
+      background: #E8F5E9;
+      color: #1B5E20;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .updated {
+      text-align: right;
+      font-size: 12px;
+      color: #9E9E9E;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="emoji">🔒</div>
+    <h1>Sera ya Faragha</h1>
+    <p>Hesabu Zangu — Simamia Pesa Zako Kila Siku</p>
+  </div>
+
+  <div class="container">
+
+    <p class="updated">Imesasishwa: Juni 2026</p>
+
+    <!-- INTRO -->
+    <div class="card">
+      <h2>💬 Utangulizi</h2>
+      <p>
+        Karibu kwenye Hesabu Zangu. Tunajali sana faragha yako na usalama wa
+        data yako. Sera hii inaelezea jinsi tunavyoshughulikia maelezo yako
+        unapotumia app yetu.
+      </p>
+      <div class="highlight">
+        <p>✅ Hesabu Zangu haikusanyi, haihifadhi, wala haishiriki data yako ya kibinafsi na mtu yeyote au kampuni yoyote.</p>
+      </div>
+    </div>
+
+    <!-- DATA COLLECTION -->
+    <div class="card">
+      <h2>📦 Data Tunayokusanya</h2>
+      <span class="badge">Kidogo Sana</span>
+      <p>Hesabu Zangu inakusanya data hii peke yake — na yote inabaki kwenye simu yako:</p>
+      <ul>
+        <li>Jina unaloweka mwenyewe (optional)</li>
+        <li>Rekodi za mapato na matumizi unazoweka wewe mwenyewe</li>
+        <li>Mipangilio ya app (vikumbusho, hali ya premium)</li>
+      </ul>
+      <p><strong>Data hii HAIONEKANI kwetu. Inabaki kwenye simu yako peke yako.</strong></p>
+    </div>
+
+    <!-- OFFLINE -->
+    <div class="card">
+      <h2>📵 App Inafanya Kazi Offline</h2>
+      <p>
+        Hesabu Zangu imejengwa kwa misingi ya "offline-first". Maana yake:
+      </p>
+      <ul>
+        <li>Data yako yote huhifadhiwa kwenye simu yako (Hive local database)</li>
+        <li>Hakuna server yetu inayopokea data yako</li>
+        <li>Internet inahitajika tu kwa matangazo (AdMob) — si kwa data yako</li>
+      </ul>
+    </div>
+
+    <!-- ADMOB -->
+    <div class="card">
+      <h2>📢 Matangazo (AdMob)</h2>
+      <p>
+        Toleo la bure la Hesabu Zangu linatumia Google AdMob kuonyesha
+        matangazo. Google inaweza kukusanya data fulani kwa madhumuni ya
+        matangazo kulingana na
+        <a href="https://policies.google.com/privacy" style="color:#1B5E20">
+          Sera ya Faragha ya Google
+        </a>.
+      </p>
+      <ul>
+        <li>Watumiaji wa Premium <strong>hawaoni matangazo</strong></li>
+        <li>Matangazo ni ya Google — sio ya Hesabu Zangu</li>
+        <li>Tunaweza kukupa mipangilio ya kukataa matangazo ya kibinafsi</li>
+      </ul>
+    </div>
+
+    <!-- PERMISSIONS -->
+    <div class="card">
+      <h2>🔑 Ruhusa za App</h2>
+      <p>App inahitaji ruhusa hizi:</p>
+      <ul>
+        <li>
+          <strong>Notifications</strong> — Kutuma vikumbusho vya asubuhi na jioni
+        </li>
+        <li>
+          <strong>Storage</strong> — Kuhifadhi faili za PDF na Excel kwenye simu yako
+        </li>
+        <li>
+          <strong>Internet</strong> — Kwa matangazo ya AdMob peke yake
+        </li>
+        <li>
+          <strong>Boot Receiver</strong> — Kuwasha upya vikumbusho baada ya simu kuzimwa
+        </li>
+      </ul>
+    </div>
+
+    <!-- CHILDREN -->
+    <div class="card">
+      <h2>👶 Watoto</h2>
+      <p>
+        Hesabu Zangu haikusudiwa kwa watoto chini ya umri wa miaka 13.
+        Hatukusanyi kwa makusudi maelezo ya kibinafsi kutoka kwa watoto.
+      </p>
+    </div>
+
+    <!-- CHANGES -->
+    <div class="card">
+      <h2>🔄 Mabadiliko ya Sera</h2>
+      <p>
+        Tunaweza kusasisha Sera hii ya Faragha mara kwa mara. Tutakuarifu
+        kupitia app au kupitia ukurasa huu ukitokea mabadiliko makubwa.
+        Endelea kutumia app kunamaanisha umekubali mabadiliko.
+      </p>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="card">
+      <h2>📧 Wasiliana Nasi</h2>
+      <p>Una maswali kuhusu Sera hii ya Faragha? Wasiliana nasi:</p>
+      <ul>
+        <li>📧 Email: hesabuzangu@gmail.com</li>
+        <li>💬 WhatsApp: +255 712 000 000</li>
+        <li>🌍 Nchi: Tanzania 🇹🇿</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <p>© 2026 Hesabu Zangu — Imetengenezwa Tanzania 🇹🇿</p>
+    <p style="margin-top: 4px;">Simamia Pesa Zako Kila Siku</p>
+  </div>
+
+</body>
+</html>
