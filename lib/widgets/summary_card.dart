@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import '../utils/colors.dart';
 
 class SummaryCard extends StatelessWidget {
   final String title;
