@@ -67,7 +67,7 @@ class HesabuZanguApp extends StatelessWidget {
             ),
           ),
         ),
-        cardTheme: CardTheme(
+        cardTheme: CardThemeData(
           color: AppColors.card,
           elevation: 2,
           shadowColor: AppColors.cardShadow,
