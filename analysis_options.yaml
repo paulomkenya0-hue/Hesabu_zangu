@@ -5,3 +5,7 @@ analyzer:
     deprecated_member_use: ignore
     unused_import: ignore
     unused_field: ignore
+    prefer_const_constructors: ignore
+    prefer_const_literals_to_create_immutables: ignore
+    prefer_const_declarations: ignore
+    prefer_function_declarations_over_variables: ignore
