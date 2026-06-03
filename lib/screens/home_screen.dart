@@ -24,8 +24,6 @@ class _HomeScreenState extends State<HomeScreen> {
   final HiveService _hive = HiveService();
   int _selectedIndex = 0;
 
-  final List<Widget> _screens = [];
-
   @override
   void initState() {
     super.initState();
