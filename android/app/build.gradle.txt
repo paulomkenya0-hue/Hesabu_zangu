@@ -1,0 +1,68 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace "com.hesabuzangu.app"
+    compileSdk flutter.compileSdkVersion
+    ndkVersion flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    defaultConfig {
+        applicationId "com.hesabuzangu.app"
+        minSdkVersion 21          // Android 5.0+
+        targetSdkVersion 34       // Android 14
+        versionCode flutter.versionCode
+        versionName flutter.versionName
+        multiDexEnabled true
+    }
+
+    // ━━━ SIGNING CONFIG (Release) ━━━
+    // Badilisha na keystore yako halisi
+    signingConfigs {
+        release {
+            // Codemagic inashughulikia hii automatically
+            // kwa production, weka hapa:
+            // storeFile file(System.getenv("CM_KEYSTORE_PATH") ?: "keystore.jks")
+            // storePassword System.getenv("CM_KEYSTORE_PASSWORD") ?: ""
+            // keyAlias System.getenv("CM_KEY_ALIAS") ?: ""
+            // keyPassword System.getenv("CM_KEY_PASSWORD") ?: ""
+        }
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
+            debuggable true
+        }
+
+        release {
+            // Shrink na obfuscate kwa usalama
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
+                         'proguard-rules.pro'
+            // signingConfig signingConfigs.release
+            signingConfig signingConfigs.debug // Temporary - badilisha production
+        }
+    }
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {
+    implementation 'androidx.multidex:multidex:2.0.1'
+}
