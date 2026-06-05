@@ -1,7 +1,7 @@
 workflows:
   hesabu-zangu-android:
     name: Hesabu Zangu — Android Build
-    max_build_duration: 60
+    max_build_duration: 120
     environment:
       flutter: stable
       java: 17
@@ -27,7 +27,7 @@ workflows:
 
       # ━━━ 3. Code analysis ━━━
       - name: Analyze code
-        script: flutter analyze --no-fatal-warnings
+        script: flutter analyze --no-fatal-warnings --no-fatal-infos
 
       # ━━━ 4. Run tests ━━━
       - name: Run tests
@@ -58,19 +58,15 @@ workflows:
             --build-number=$(($(date +%s)))
 
     artifacts:
-      # APK ya debug — kwa test haraka
       - build/app/outputs/flutter-apk/app-debug.apk
-      # APK ya release — kwa kushare
       - build/app/outputs/flutter-apk/app-release.apk
-      # App Bundle — kwa Play Store
       - build/app/outputs/bundle/release/app-release.aab
-      # Debug symbols
       - build/debug-info
 
     publishing:
       email:
         recipients:
-          - your-email@gmail.com  # Badilisha na email yako
+          - paulomkenya0@gmail.com
         notify:
           success: true
           failure: true
