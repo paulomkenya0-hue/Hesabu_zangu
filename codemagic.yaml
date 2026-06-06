@@ -3,7 +3,7 @@ workflows:
     name: Hesabu Zangu — Android Build
     max_build_duration: 120
     environment:
-      flutter: stable
+      flutter: 3.22.5  # ✅ Use known working version
       java: 17
 
     triggering:
@@ -17,6 +17,23 @@ workflows:
           include: true
 
     scripts:
+      # ━━━ 0. FIX V1 EMBEDDING ━━━
+      - name: Fix Android configuration
+        script: |
+          # Create correct gradle.properties
+          cat > android/gradle.properties << EOF
+          android.useAndroidX=true
+          android.enableJetifier=true
+          org.gradle.jvmargs=-Xmx2048m
+          EOF
+          
+          # Clean any cached v1 files
+          cd android
+          ./gradlew clean
+          cd ..
+          
+          echo "✅ Android config fixed"
+
       # ━━━ 1. Flutter version check ━━━
       - name: Flutter version
         script: flutter --version
@@ -33,14 +50,18 @@ workflows:
       - name: Run tests
         script: flutter test || echo "Hakuna tests bado"
 
-      # ━━━ 5. Build APK (Debug — kwa testing) ━━━
+      # ━━━ 5. Clean build ━━━
+      - name: Clean build
+        script: flutter clean
+
+      # ━━━ 6. Build Debug APK ━━━
       - name: Build Debug APK
         script: |
           flutter build apk --debug \
             --build-name=1.0.0 \
             --build-number=$(($(date +%s)))
 
-      # ━━━ 6. Build APK (Release — kwa Play Store) ━━━
+      # ━━━ 7. Build Release APK ━━━
       - name: Build Release APK
         script: |
           flutter build apk --release \
@@ -50,7 +71,7 @@ workflows:
             --obfuscate \
             --split-debug-info=build/debug-info
 
-      # ━━━ 7. Build App Bundle (Play Store preferred) ━━━
+      # ━━━ 8. Build App Bundle ━━━
       - name: Build App Bundle
         script: |
           flutter build appbundle --release \
