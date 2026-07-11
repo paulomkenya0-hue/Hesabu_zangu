@@ -29,6 +29,11 @@
             android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustResize">
 
+            <!-- FIX: Flutter Embedding imewekwa hapa ndani ya Activity sasa -->
+            <meta-data
+                android:name="flutterEmbedding"
+                android:value="2"/>
+
             <meta-data
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"/>
@@ -53,11 +58,6 @@
                 <action android:name="com.htc.intent.action.QUICKBOOT_POWERON"/>
             </intent-filter>
         </receiver>
-
-        <!-- Flutter Embedding -->
-        <meta-data
-            android:name="flutterEmbedding"
-            android:value="2"/>
 
     </application>
 
