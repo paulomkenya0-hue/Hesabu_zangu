@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import '../services/hive_service.dart';
 import '../services/notification_service.dart';
-import '../services/premium_service.dart';
 import '../utils/colors.dart';
 import '../utils/constants.dart';
-import '../widgets/premium_badge_widget.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -138,22 +136,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                 ],
               ),
-            ),
-
-            const SizedBox(height: 16),
-
-            // ━━━ PREMIUM BADGE ━━━
-            PremiumBadgeWidget(
-              isPremium: _hive.isPremium(),
-              onUpgrade: () async {
-                final result = await showModalBottomSheet<bool>(
-                  context: context,
-                  isScrollControlled: true,
-                  backgroundColor: Colors.transparent,
-                  builder: (_) => const PremiumScreen(),
-                );
-                if (result == true) setState(() {});
-              },
             ),
 
             const SizedBox(height: 24),

@@ -35,9 +35,6 @@ dependencies:
   open_file: ^3.3.2
   share_plus: ^9.0.0
 
-  # ━━━ ADS ━━━
-  google_mobile_ads: ^4.0.0
-
   # ━━━ UI & ICONS ━━━
   iconsax: ^0.0.8
   google_fonts: ^6.1.0

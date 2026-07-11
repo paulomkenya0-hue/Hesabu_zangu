@@ -6,8 +6,6 @@ import '../models/transaction_model.dart';
 import '../utils/colors.dart';
 import '../widgets/summary_card.dart';
 import '../widgets/transaction_card.dart';
-import '../widgets/banner_ad_widget.dart';
-import '../services/admob_service.dart';
 import 'add_transaction_screen.dart';
 import 'history_screen.dart';
 import 'report_screen.dart';
@@ -307,13 +305,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
 
       // ━━━ BOTTOM NAV ━━━
-      bottomNavigationBar: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const BannerAdWidget(),
-          _buildBottomNav(),
-        ],
-      ),
+      bottomNavigationBar: _buildBottomNav(),
 
       // ━━━ FAB ━━━
       floatingActionButton: FloatingActionButton.extended(
@@ -651,8 +643,6 @@ class _HomeScreenState extends State<HomeScreen> {
         builder: (_) => AddTransactionScreen(type: type),
       ),
     );
-    // Onyesha interstitial baada ya kuongeza rekodi
-    await AdMobService().showInterstitialIfReady();
   }
 
   Future<void> _deleteTransaction(TransactionModel transaction) async {

@@ -4,7 +4,6 @@ import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 import '../models/transaction_model.dart';
 import '../services/hive_service.dart';
-import '../services/admob_service.dart';
 import '../utils/colors.dart';
 import '../utils/constants.dart';
 
@@ -29,12 +28,6 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
 
   // ✅ FIX: Tumia widget.type badala ya isIncome
   bool get _isIncome => widget.type == 'income';
-
-  @override
-  void initState() {
-    super.initState();
-    AdMobService().loadInterstitialAd();
-  }
 
   List<Map<String, dynamic>> get categories => _isIncome
       ? AppConstants.incomeCategories
