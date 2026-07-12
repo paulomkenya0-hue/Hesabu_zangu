@@ -1,4 +1,3 @@
-```yaml
 workflows:
   hesabu-zangu-android:
     name: Hesabu Zangu — Android Build
