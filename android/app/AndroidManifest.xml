@@ -19,6 +19,11 @@
         android:icon="@mipmap/ic_launcher"
         android:enableOnBackInvokedCallback="true">
 
+        <!-- FIX: flutterEmbedding lazima iwe moja kwa moja ndani ya <application>, si ndani ya <activity> -->
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -28,11 +33,6 @@
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustResize">
-
-            <!-- FIX: Flutter Embedding imewekwa hapa ndani ya Activity sasa -->
-            <meta-data
-                android:name="flutterEmbedding"
-                android:value="2"/>
 
             <meta-data
               android:name="io.flutter.embedding.android.NormalTheme"
